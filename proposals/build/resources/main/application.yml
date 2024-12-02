@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: credit
+  profiles:
+    active: dev
+
+server:
+  error:
+    include-stacktrace: never
+    include-path: never
