@@ -1,3 +1,34 @@
+broker:
+  queues:
+    proposals:
+      name: proposals
+    proposals-notification:
+      name: proposals.notification
+    pe@nding-proposals-validation:
+      name: pending.proposals.validation
+    pending-proposals-notification:
+      name: pending.proposals.notification
+
+  exchanges:
+    proposals:
+      name: proposals.exchange
+    pending-proposals:
+      name: pending.proposals.exchange
+
+  bindings:
+    main:
+      exchange-name: proposals.exchange
+      queue-name: proposals
+    notification:
+      exchange-name: proposals.exchange
+      queue-name: proposals.notification
+    pending-validation:
+      exchange-name: pending.proposals.exchange
+      queue-name: pending.proposals.validation
+    pending-notification:
+      exchange-name: pending.proposals.exchange
+      queue-name: pending.proposals.notification
+
 spring:
   h2:
     console:
