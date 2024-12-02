@@ -1,63 +1,74 @@
 package com.avila.credit.config;
 
+import lombok.AllArgsConstructor;
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+@AllArgsConstructor
 @Configuration public class RabbitMqConfig {
 
-    @Bean FanoutExchange pendingExchange() {
-        return ExchangeBuilder.fanoutExchange("pending.proposals.exchange")
-                .build();
+    private final BrokerConfigurationProperties config;
+    private final List<Queue> queues = new ArrayList<>();
+    private final List<FanoutExchange> exchanges = new ArrayList<>();
+
+    @Bean MessageConverter messageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
 
-    @Bean Binding bindPendingValidations() {
-        return BindingBuilder.bind(pendingValidations())
-                .to(pendingExchange());
+    @Bean Declarables queues() {
+        assert Objects.nonNull(config);
+        assert Objects.nonNull(config.getQueues());
+
+        config.getQueues().values().stream()
+                .filter(Objects::nonNull)
+                .map(properties -> QueueBuilder.durable(properties.getName()).build())
+                .forEach(queues::add);
+
+        return new Declarables(queues);
     }
 
-    @Bean Binding bindPendingNotification() {
-        return BindingBuilder.bind(pendingNotifications())
-                .to(pendingExchange());
+    @Bean Declarables exchanges() {
+        assert Objects.nonNull(config);
+        assert Objects.nonNull(config.getExchanges());
+
+        config.getExchanges().values().stream()
+                .filter(Objects::nonNull)
+                .map(properties -> (FanoutExchange) ExchangeBuilder.fanoutExchange(properties.getName()).build())
+                .forEach(exchanges::add);
+
+        return new Declarables(exchanges);
     }
 
-    @Bean
-    public Queue pendingValidations() {
-        return QueueBuilder.durable("pending.proposals.validation")
-                .build();
-    }
+    @Bean Declarables bindings() {
+        assert Objects.nonNull(config);
+        assert Objects.nonNull(config.getBindings());
 
-    @Bean
-    public Queue pendingNotifications() {
-        return QueueBuilder.durable("pending.proposals.notification")
-                .build();
-    }
+        List<Binding> bindings = config.getBindings().values().stream()
+                .filter(Objects::nonNull)
+                .map(properties -> {
+                    Queue queue = queues.stream()
+                            .filter(q -> properties.getQueueName().equals(q.getName()))
+                            .findFirst()
+                            .orElseThrow();
 
-    @Bean FanoutExchange exchange() {
-        return ExchangeBuilder.fanoutExchange("proposals.exchange")
-                .build();
-    }
+                    FanoutExchange exchange = exchanges.stream()
+                            .filter(ex -> properties.getExchangeName().equals(ex.getName()))
+                            .findFirst()
+                            .orElseThrow();
 
-    @Bean Binding bind() {
-        return BindingBuilder.bind(proposals())
-                .to(exchange());
-    }
+                    return BindingBuilder.bind(queue)
+                            .to(exchange);
+                })
+                .toList();
 
-    @Bean Binding bindNotification() {
-        return BindingBuilder.bind(notifications())
-                .to(exchange());
-    }
-
-    @Bean
-    public Queue proposals() {
-        return QueueBuilder.durable("proposals")
-                .build();
-    }
-
-    @Bean
-    public Queue notifications() {
-        return QueueBuilder.durable("proposals.notification")
-                .build();
+        return new Declarables(bindings);
     }
 
 }
