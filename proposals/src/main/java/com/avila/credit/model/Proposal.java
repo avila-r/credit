@@ -38,10 +38,10 @@ import java.math.BigDecimal;
     private BigDecimal value;
 
     @Column(name = "is_approved", nullable = false)
-    private Boolean approved;
+    private boolean approved;
 
     @Column(name = "is_integrated", nullable = false)
-    private Boolean integrated;
+    private boolean notified;
 
     @Column(name = "proposal_observation", nullable = false)
     private String observation;
