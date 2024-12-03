@@ -1,10 +1,10 @@
-package com.avila.credit.controller;
+package com.avila.proposals.controller;
 
 import lombok.AllArgsConstructor;
 
-import com.avila.credit.dto.ProposalRequest;
-import com.avila.credit.dto.ProposalResponse;
-import com.avila.credit.service.ProposalService;
+import com.avila.proposals.dto.ProposalRequest;
+import com.avila.proposals.dto.ProposalResponse;
+import com.avila.proposals.service.ProposalService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

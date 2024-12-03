@@ -1,7 +1,7 @@
-package com.avila.credit.service;
+package com.avila.proposals.service;
 
-import com.avila.credit.dto.ProposalResponse;
-import com.avila.credit.model.Proposal;
+import com.avila.proposals.dto.ProposalResponse;
+import com.avila.proposals.model.Proposal;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;

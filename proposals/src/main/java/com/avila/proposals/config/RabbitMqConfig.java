@@ -1,4 +1,4 @@
-package com.avila.credit.config;
+package com.avila.proposals.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.amqp.core.*;

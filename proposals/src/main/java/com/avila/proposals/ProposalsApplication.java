@@ -1,4 +1,4 @@
-package com.avila.credit;
+package com.avila.proposals;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;

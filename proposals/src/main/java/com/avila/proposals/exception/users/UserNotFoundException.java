@@ -1,4 +1,4 @@
-package com.avila.credit.exception.users;
+package com.avila.proposals.exception.users;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

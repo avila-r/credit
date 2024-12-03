@@ -1,7 +1,7 @@
-package com.avila.credit.dto;
+package com.avila.proposals.dto;
 
-import com.avila.credit.model.Proposal;
-import com.avila.credit.model.User;
+import com.avila.proposals.model.Proposal;
+import com.avila.proposals.model.User;
 
 import java.math.BigDecimal;
 

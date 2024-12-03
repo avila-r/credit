@@ -1,10 +1,10 @@
-package com.avila.credit.service;
+package com.avila.proposals.service;
 
-import com.avila.credit.dto.ProposalRequest;
-import com.avila.credit.exception.users.UserAlreadyExistsException;
-import com.avila.credit.model.Proposal;
-import com.avila.credit.repository.ProposalRepository;
-import com.avila.credit.repository.UserRepository;
+import com.avila.proposals.dto.ProposalRequest;
+import com.avila.proposals.exception.users.UserAlreadyExistsException;
+import com.avila.proposals.model.Proposal;
+import com.avila.proposals.repository.ProposalRepository;
+import com.avila.proposals.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
 

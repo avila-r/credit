@@ -1,6 +1,6 @@
-package com.avila.credit.repository;
+package com.avila.proposals.repository;
 
-import com.avila.credit.model.User;
+import com.avila.proposals.model.User;
 
 import org.springframework.data.repository.CrudRepository;
 

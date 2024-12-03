@@ -1,4 +1,4 @@
-package com.avila.credit.model;
+package com.avila.proposals.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

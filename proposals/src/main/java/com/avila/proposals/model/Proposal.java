@@ -1,4 +1,4 @@
-package com.avila.credit.model;
+package com.avila.proposals.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
