@@ -2,7 +2,7 @@
 up:
 	docker-compose up --build --force-recreate -d
 
-stop:
+down:
 	docker-compose stop
 
 # Command to completely remove containers, volumes, and images
