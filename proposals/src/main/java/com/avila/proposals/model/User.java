@@ -28,6 +28,9 @@ import java.math.BigDecimal;
     @Column(name = "user_cpf", unique = true, nullable = false, updatable = false)
     private String cpf;
 
+    @Column(name = "user_number", unique = true, nullable = false)
+    private String contact;
+
     @Column(name = "user_name", nullable = false)
     private String name;
 
