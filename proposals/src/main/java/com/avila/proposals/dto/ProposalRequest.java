@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @lombok.Builder
 public record ProposalRequest (
         String cpf,
+        String contact,
         String name,
         String surname,
         BigDecimal balance,
@@ -26,6 +27,7 @@ public record ProposalRequest (
         // Use the builder pattern for creating the User entity
         User user = User.builder()
                 .cpf(cpf)
+                .contact(contact)
                 .name(name)
                 .surname(surname)
                 .balance(balance)

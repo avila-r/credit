@@ -13,6 +13,7 @@ public record ProposalResponse (
         Long id,
         @JsonProperty("user_id") Long userId,
         String cpf,
+        String contact,
         String name,
         String surname,
         BigDecimal balance,
@@ -30,6 +31,7 @@ public record ProposalResponse (
                 .id(proposal.getId())
                 .userId(proposal.getUser().getId())
                 .cpf(proposal.getUser().getCpf())
+                .contact(proposal.getUser().getContact())
                 .name(proposal.getUser().getName())
                 .surname(proposal.getUser().getSurname())
                 .balance(proposal.getUser().getBalance())
