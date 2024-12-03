@@ -1,6 +1,6 @@
 spring:
   application:
-    name: credit
+    name: proposals
   profiles:
     active: dev
 
