@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    addresses: ${QUEUE_URL:${QUEUE_CREDENTIALS:${QUEUE_ADMIN_USERNAME:guest}:${QUEUE_ADMIN_PASSWORD:guest}}@localhost}
+
+broker:
+  queue:
+    name: pending.proposals.notification
+
+sms:
+  messages:
+    pending-proposal: "Prezado(a) %s, sua proposta foi recebida por nossa equipe e será analisada. Em breve, retornaremos em contato!"

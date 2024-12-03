@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: notifications
+  profiles:
+    active: dev
+
+server:
+  error:
+    include-stacktrace: never
+    include-path: never
