@@ -36,8 +36,7 @@ public record ProposalRequest (
                 .user(user)  // Set the user entity created above
                 .deadline(deadline)
                 .value(value)
-                .approved(false)
-                .integrated(false)
+                .notified(true)
                 .observation("")
                 .build();
     }
