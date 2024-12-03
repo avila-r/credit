@@ -27,6 +27,9 @@ import java.util.stream.StreamSupport;
         if (users.existsByCpf(request.cpf()))
             throw new UserAlreadyExistsException("CPF " + request.cpf() + " already in use");
 
+        if (users.existsByContact(request.contact()))
+            throw new UserAlreadyExistsException("Contact + " + request.contact() + " already in use");
+
         Proposal proposal = proposals.save(request.entity());
         boolean ok = notifier.notify(proposal);
         if (!ok) {
