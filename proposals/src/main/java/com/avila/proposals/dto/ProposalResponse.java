@@ -18,7 +18,9 @@ public record ProposalResponse (
         String surname,
         BigDecimal balance,
         Integer deadline,
-        BigDecimal value
+        BigDecimal value,
+        String observation,
+        boolean approved
 ) {
     /**
      * Converts a Proposal entity into a ProposalResponse DTO.
@@ -37,6 +39,8 @@ public record ProposalResponse (
                 .balance(proposal.getUser().getBalance())
                 .deadline(proposal.getDeadline())
                 .value(proposal.getValue())
+                .observation(proposal.getObservation())
+                .approved(proposal.isApproved())
                 .build();
     }
 }
