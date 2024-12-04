@@ -17,5 +17,7 @@ public record ProposalResponse (
         String surname,
         BigDecimal balance,
         Integer deadline,
-        BigDecimal value
+        BigDecimal value,
+        String observation,
+        boolean approved
 ){}
