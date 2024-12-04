@@ -48,6 +48,11 @@ import java.util.stream.StreamSupport;
         proposals.deleteById(id);
     }
 
+    @Transactional public void update(Proposal proposal) {
+        if (proposals.existsById(proposal.getId()))
+            proposals.save(proposal);
+    }
+
     @Scheduled(fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
     void notifyProposals() {
         for (Proposal proposal : proposals.findAllByNotifiedIsFalse()) {
