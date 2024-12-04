@@ -1,6 +1,7 @@
 package com.avila.proposals.dto;
 
 import com.avila.proposals.model.Proposal;
+import com.avila.proposals.model.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
@@ -41,6 +42,32 @@ public record ProposalResponse (
                 .value(proposal.getValue())
                 .observation(proposal.getObservation())
                 .approved(proposal.isApproved())
+                .build();
+    }
+
+    /**
+     * Converts a ProposalResponse DTO into a Proposal entity.
+     *
+     * @return a Proposal entity representing the details in the DTO.
+     */
+    public Proposal entity() {
+        User user = User.builder()
+                .id(this.userId())
+                .cpf(this.cpf())
+                .contact(this.contact())
+                .name(this.name())
+                .surname(this.surname())
+                .balance(this.balance())
+                .build();
+
+        return Proposal.builder()
+                .id(this.id())
+                .user(user)
+                .deadline(this.deadline())
+                .value(this.value())
+                .observation(this.observation())
+                .approved(this.approved())
+                .notified(true)
                 .build();
     }
 }
