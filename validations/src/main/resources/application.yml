@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: validations
+  profiles:
+    active: dev
+
+server:
+  error:
+    include-stacktrace: never
+    include-path: never
+
+sms:
+  observations:
+    approved: "Prezado(a) %s, sua proposta foi aprovada em nosso sistema. Parabéns! Você pode continuar com o processo e aguardar o próximo passo."
+    unapproved: "Prezado(a) %s, sua proposta não foi aprovada em nosso sistema. Por favor, entre em contato para mais informações."
+    low-score: "Prezado(a) %s, sua proposta não foi aprovada devido à pontuação de crédito baixa no Serasa. Recomendamos consultar sua pontuação diretamente no Serasa para mais informações."
+    invalid-deadline: "Prezado(a) %s, o prazo de pagamento informado em sua proposta é inválido. Por favor, revise o prazo e envie novamente."
+    blacklisted: "Prezado(a) %s, sua proposta não foi aprovada pois identificamos uma pendência de crédito no Serasa. Por favor, consulte seu CPF junto ao Serasa para mais detalhes."

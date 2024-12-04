@@ -1,0 +1,9 @@
+spring:
+  rabbitmq:
+    addresses: ${QUEUE_URL:${QUEUE_CREDENTIALS:${QUEUE_ADMIN_USERNAME:guest}:${QUEUE_ADMIN_PASSWORD:guest}}@localhost}
+
+broker:
+  queue:
+    name: pending.proposals.validation
+  exchange:
+    name: proposals.exchange
