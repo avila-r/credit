@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
         if (!proposal.approved()) {
             service.remove(proposal.id());
         }
+
+        service.update(proposal.entity());
     }
 
 }
