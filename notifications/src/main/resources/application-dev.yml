@@ -4,7 +4,8 @@ spring:
 
 broker:
   queue:
-    name: pending.proposals.notification
+    default: proposals.notification
+    pending: pending.proposals.notification
 
 sms:
   messages:
