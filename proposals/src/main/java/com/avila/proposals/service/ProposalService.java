@@ -44,6 +44,10 @@ import java.util.stream.StreamSupport;
                 .toList();
     }
 
+    @Transactional public void remove(Long id) {
+        proposals.deleteById(id);
+    }
+
     @Scheduled(fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
     void notifyProposals() {
         for (Proposal proposal : proposals.findAllByNotifiedIsFalse()) {
